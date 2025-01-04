@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Threshold Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Adaptive Threshold Algoritması</h1>
+
+
+        <h2>Adaptive Threshold Nedir?</h2>
+        <p>
+            Adaptive Threshold algoritması, görüntü işleme alanında kullanılan bir teknik olup, 
+            görüntülerdeki farklı aydınlatma koşullarına adapte olarak eşikleme yapar. 
+            Bu yöntem, her pikselin komşularının yoğunluk değerlerine bağlı olarak eşik değerini dinamik bir şekilde belirler.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Adaptive Threshold algoritması, görüntü üzerinde küçük pencereler (bloklar) kullanarak çalışır. 
+            Her pencere için, pikselin yoğunluk değeri ile komşu piksellerin yoğunluk değerleri dikkate alınarak bir eşik değeri hesaplanır. 
+            Bu eşik değeri, penceredeki pikselin ön plan veya arka plan olarak atanmasını sağlar. 
+            Algoritma genellikle şu adımları izler:
+        </p>
+        <ol>
+            <li>Görüntü üzerinde belirli boyutlarda pencereler oluştur.</li>
+            <li>Her pencere için piksel yoğunluk değerlerini analiz et.</li>
+            <li>Pencere içindeki ortalama veya medyan değerini kullanarak eşik değerini belirle.</li>
+            <li>Pikselleri bu eşik değerine göre sınıflandır.</li>
+        </ol>
+
+        <h2>Eşik Değerinin Hesaplanması</h2>
+        <p>
+            Eşik değerleri, genellikle aşağıdaki yöntemlerle hesaplanır:
+        </p>
+        <ul>
+            <li><strong>Ortalama Eşikleme:</strong> Pencere içindeki piksel değerlerinin ortalaması alınarak eşik değeri belirlenir.</li>
+            <li><strong>Medyan Eşikleme:</strong> Pencere içindeki piksel değerlerinin medyanı alınarak eşik değeri belirlenir.</li>
+            <li><strong>Gauss Eşikleme:</strong> Gauss dağılımına göre ağırlıklandırılmış ortalama kullanılır.</li>
+        </ul>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            - Farklı aydınlatma koşullarına adaptasyon kabiliyeti vardır.<br>
+            - Görüntüdeki detayların korunmasına yardımcı olur.<br>
+            - Gürültüye karşı dayanıklıdır ve daha iyi sonuçlar verir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            - Hesaplama maliyeti, sabit eşikleme yöntemlerine göre daha yüksektir.<br>
+            - Çok küçük pencereler kullanıldığında, bazı detayların kaybolmasına neden olabilir.<br>
+            - Uygulama karmaşık olabilir ve doğru pencere boyutunun seçilmesi önemlidir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Adaptive Threshold algoritması, tıbbi görüntü analizi, belge görüntüleme, yüz tanıma sistemleri, 
+            nesne tespiti ve genel görüntü işleme uygulamaları gibi birçok alanda kullanılmaktadır. 
+            Özellikle değişken aydınlatma koşullarının bulunduğu ortamlarda tercih edilir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

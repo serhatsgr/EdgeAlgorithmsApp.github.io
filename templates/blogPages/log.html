@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laplace of Gaussian Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Laplace of Gaussian Algoritması</h1>
+
+
+        <h2>Laplace of Gaussian Nedir?</h2>
+        <p>
+            Laplace of Gaussian (LoG) algoritması, görüntü işleme alanında kenar tespiti ve görüntü analizi için kullanılan bir tekniktir. 
+            Bu yöntem, önce Gaussian bulanıklaştırma uygular, ardından Laplace operatörü ile kenarları tespit eder.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            LoG algoritması, bir görüntüyü önce Gaussian filtre ile bulanıklaştırır. 
+            Daha sonra, elde edilen bulanık görüntü üzerinde Laplace operatörü uygulanarak kenar noktaları tespit edilir.
+        </p>
+
+        <h2>LoG Çekirdeği</h2>
+        <p>
+            Laplace of Gaussian algoritmasında kullanılan çekirdek, aşağıdaki gibi tanımlanabilir:
+        </p>
+        <ul>
+            <li>G(x, y) = (1 / (πσ²)) * (1 - (x² + y²) / (2σ²)) * e^(-(x² + y²) / (2σ²))</li>
+        </ul>
+        <p>
+            Burada, σ (sigma) Gaussian dağılımının standart sapmasını temsil eder ve kenar tespit hassasiyetini etkiler.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            LoG algoritması, gürültüyü azaltırken kenarları hassas bir şekilde tespit etme yeteneğine sahiptir. 
+            Ayrıca, görüntüdeki detayları koruma konusunda etkilidir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            İşlem süresi, büyük çekirdekler kullanıldığında önemli ölçüde artabilir. 
+            Aşırı gürültülü görüntülerde performansı düşebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Laplace of Gaussian algoritması, tıbbi görüntü analizi, yüz tanıma sistemleri, otonom araçların çevre algısı ve genel görüntü işleme uygulamaları gibi birçok alanda kullanılmaktadır. 
+            Özellikle kenar algılamanın önemli olduğu durumlarda tercih edilir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

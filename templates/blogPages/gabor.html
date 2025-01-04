@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabor Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gabor Algoritması</h1>
+
+        <h2>Gabor Nedir?</h2>
+        <p>
+            Gabor algoritması, görüntü işleme ve analizi alanında kullanılan bir tekniktir ve özellikle dokusal özellikleri çıkarmak için kullanılır. 
+            Gabor filtreleri, hem frekans hem de uzamsal bilgiyi bir araya getirerek, görüntüdeki kenarları, dokuları ve desenleri tespit etmede etkilidir.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Gabor filtreleri, belirli bir frekansa sahip karmaşık bir sinüs dalgası ile Gauss dağılımının çarpımı olarak tanımlanır. 
+            Bu filtreler, farklı yönlerde ve frekanslarda uygulanarak, görüntüdeki dokusal özelliklerin çıkarılmasını sağlar. 
+            Gabor filtreleri genellikle şu formülle tanımlanır:
+        </p>
+        <p>
+            G(x, y) = (1/2πσ²) * e^(-(x² + y²)/(2σ²)) * e^(i(2πf * x + θ))
+        </p>
+        <p>
+            Burada:
+        </p>
+        <ul>
+            <li>G(x, y): Gabor filtresi fonksiyonu</li>
+            <li>σ: Gauss dağılımının standart sapması</li>
+            <li>f: Frekans</li>
+            <li>θ: Açı (filtrenin yönü)</li>
+        </ul>
+        <p>
+            Bu filtre, görüntüdeki belirli frekans bileşenlerini vurgulamak için kullanılır.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            - Hem uzamsal hem de frekans bilgisi sağlar.<br>
+            - Farklı yönlerdeki dokusal özellikleri tespit etme yeteneğine sahiptir.<br>
+            - Gürültüye karşı dayanıklıdır ve karmaşık görüntülerde başarılı sonuçlar verir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            - Hesaplama maliyeti yüksektir ve büyük görüntülerde yavaşlayabilir.<br>
+            - Filtre parametrelerinin (frekans ve açılar) dikkatlice seçilmesi gerekir.<br>
+            - Aşırı gürültülü görüntülerde istenmeyen sonuçlar verebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Gabor algoritması, yüz tanıma, biyomedikal görüntü analizi, dokusal sınıflandırma, endüstriyel görüntü işleme ve genel görüntü analizi gibi birçok alanda kullanılmaktadır. 
+            Özellikle dokusal bilgilerin önemli olduğu uygulamalarda tercih edilmektedir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

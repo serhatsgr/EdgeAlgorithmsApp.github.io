@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threshold Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Threshold Algoritması</h1>
+
+        <div class="image-container">
+            <img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXeBvDItzQuyRksqC052bCa4ocvr-4C6TVUc9G4qCxBttnEgS2auG4wpdz2XnOTsB7qKQlYjpAbUvs-EmyBfVQm7O4CSn71zPjKdueRhAf-Vx17fgCSJ8UcRtivHWbcwPx6KE8i1-aZJ-IUG195aWciKbqw92mxTjqITvGce7F3CiihHGtajMRE?key=3d_z5dHJgVZSFfqLscQSfw" alt="Threshold Algoritması Örneği">
+        </div>
+
+        <h2>Threshold Nedir?</h2>
+        <p>
+            Threshold algoritması, görüntü işleme alanında kullanılan temel bir tekniktir. 
+            Bu yöntem, bir görüntüdeki piksellerin yoğunluk değerlerini belirli bir eşik değerine (threshold) göre sınıflandırarak, görüntüyü iki gruba ayırır: 
+            genellikle "ön plan" ve "arka plan".
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Threshold algoritması, her pikselin yoğunluk değerini inceleyerek çalışır. 
+            Eğer pikselin değeri belirlenen eşik değerinden büyükse, bu piksel "ön plan" (genellikle beyaz) olarak atanır; 
+            aksi takdirde "arka plan" (genellikle siyah) olarak atanır. 
+            Bu işlem, genellikle aşağıdaki formülle ifade edilir:
+        </p>
+        <p>
+            I'(x, y) = { 255, I(x, y) > T <br>
+            { 0, I(x, y) ≤ T
+        </p>
+        <p>
+            Burada, I(x, y) giriş görüntüsündeki piksel değerini, I'(x, y) çıkış görüntüsündeki piksel değerini ve T eşik değerini temsil eder.
+        </p>
+
+        <h2>Eşik Değerinin Belirlenmesi</h2>
+        <p>
+            Eşik değeri, görüntünün özelliklerine ve uygulamanın gereksinimlerine bağlı olarak belirlenir. 
+            Eşik değeri belirlemede kullanılan yaygın yöntemler şunlardır:
+        </p>
+        <ul>
+            <li><strong>Otsu'nun Yöntemi:</strong> Görüntü histogramını analiz ederek en iyi eşik değerini otomatik olarak belirler.</li>
+            <li><strong>Adaptive Thresholding:</strong> Görüntüdeki yerel özelliklere göre eşik değerini ayarlar.</li>
+            <li><strong>Basit Eşikleme:</strong> Kullanıcı tarafından belirlenen sabit bir eşik değeri kullanılır.</li>
+        </ul>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            - Basit ve hızlı bir yöntemdir.<br>
+            - Görüntüleri ikili hale getirerek daha ileri işleme adımlarına olanak tanır.<br>
+            - Uygulaması oldukça kolaydır.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            - Gürültülü görüntülerde istenmeyen sonuçlar verebilir.<br>
+            - Tek bir eşik değeri kullanılması, karmaşık görüntülerde başarısız olabilir.<br>
+            - Aydınlatma koşullarındaki değişikliklerden etkilenebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Threshold algoritması, yüz tanıma, nesne tespiti, biyomedikal görüntü analizi, endüstriyel görüntü işleme ve genel görüntü analizi gibi birçok alanda kullanılmaktadır. 
+            Özellikle görüntüdeki nesnelerin ayrılması ve sınıflandırılması gereken durumlarda yaygın olarak tercih edilir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

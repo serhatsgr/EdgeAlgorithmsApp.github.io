@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roberts Kenar Algılama Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Roberts Kenar Algılama Algoritması</h1>
+
+       
+
+        <h2>Roberts Algoritması Nedir?</h2>
+        <p>
+            Roberts kenar algılama algoritması, görüntü işleme alanında kenarları tespit etmek için kullanılan bir tekniktir. 
+            Bu algoritma, görüntüdeki gradyan değişimlerini belirleyerek kenarları algılar.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Roberts algoritması, 2x2'lik bir konvolüsyon çekirdeği kullanarak çalışır. 
+            Bu çekirdek, piksel yoğunluğundaki değişimleri ölçerek kenarları belirginleştirir.
+        </p>
+
+        <h2>Roberts Çekirdekleri</h2>
+        <p>
+            Roberts algoritmasında kullanılan çekirdekler aşağıdaki gibidir:
+        </p>
+        <ul>
+            <li>G<sub>x</sub> = [[1, 0], [0, -1]]</li>
+            <li>G<sub>y</sub> = [[0, 1], [-1, 0]]</li>
+        </ul>
+        <p>
+            Bu çekirdekler, yatay ve dikey gradyanları tespit etmek için kullanılır.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            Roberts algoritması, kenar tespitinde hızlı bir yöntem sunar ve basit yapısı sayesinde uygulanması kolaydır. 
+            Ayrıca, görüntüdeki keskin kenarları belirgin hale getirme yeteneği ile dikkat çeker.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            Aşırı gürültülü görüntülerde performansı düşebilir. 
+            Ayrıca, daha büyük kenar tespit algoritmalarına göre daha az doğruluk sağlayabilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Roberts algoritması, tıbbi görüntü analizi, yüz tanıma sistemleri, otonom araçların çevre algısı ve genel görüntü işleme uygulamaları gibi birçok alanda kullanılmaktadır. 
+            Özellikle kenar algılamanın önemli olduğu durumlarda tercih edilir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

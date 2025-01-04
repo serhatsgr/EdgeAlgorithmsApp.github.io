@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilateral Bulanıklaştırma Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bilateral Bulanıklaştırma Algoritması</h1>
+
+        <h2>Bilateral Bulanıklaştırma Nedir?</h2>
+        <p>
+            Bilateral bulanıklaştırma, gürültüyü azaltırken görüntüdeki kenarları korumak için kullanılan bir görüntü işleme tekniğidir. 
+            Bu yöntem, hem uzamsal (spatial) hem de yoğunluk (intensity) bilgilerini dikkate alarak her piksel için yeni bir değer hesaplar.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Bilateral bulanıklaştırma, bir pikselin komşu pikselleri üzerinde bir ağırlıklı ortalama alır. 
+            Ağırlıklar, iki ayrı Gaussian fonksiyonu ile hesaplanır: biri uzamsal mesafeye, diğeri ise yoğunluk farkına bağlıdır. 
+            Bu sayede, benzer yoğunlukta olan piksellerin etkisi daha yüksek olur.
+        </p>
+
+        <h2>Bilateral Çekirdeği</h2>
+        <p>
+            Bilateral bulanıklaştırma, genellikle aşağıdaki formül ile tanımlanır:
+        </p>
+        <ul>
+            <li>G(x, y) = (1 / Z) * Σ I(i, j) * G<sub>σd</sub>(||p - (i, j)||) * G<sub>σr</sub>(|I(p) - I(i, j)|)</li>
+        </ul>
+        <p>
+            Burada, Z normalizasyon faktörüdür, p merkez pikseli, (i, j) ise komşu pikselleri temsil eder.
+            G<sub>σd</sub> uzamsal Gaussian ve G<sub>σr</sub> yoğunluk Gaussian fonksiyonlarını ifade eder.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            Bilateral bulanıklaştırma, görüntüdeki kenarları koruma yeteneği ile gürültüyü etkili bir şekilde azaltır. 
+            Özellikle detayların korunması gereken durumlarda tercih edilir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            İşlem süresi, büyük pencereler kullanıldığında önemli ölçüde artabilir. 
+            Ayrıca, çok fazla gürültü içeren görüntülerde performansı düşebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Bilateral bulanıklaştırma, tıbbi görüntü analizi, yüz tanıma sistemleri, video işleme ve genel görüntü işleme uygulamaları gibi birçok alanda kullanılmaktadır. 
+            Özellikle gürültü azaltma ve detay koruma gereksinimi olan uygulamalarda tercih edilmektedir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

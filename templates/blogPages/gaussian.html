@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaussian Bulanıklaştırma Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gaussian Bulanıklaştırma Algoritması</h1>
+
+        <h2>Gaussian Bulanıklaştırma Nedir?</h2>
+        <p>
+            Gaussian bulanıklaştırma, görüntü işleme alanında gürültüyü azaltmak ve görüntüyü yumuşatmak için kullanılan bir tekniktir. 
+            Bu yöntem, piksel değerlerini komşu piksel değerleri ile ortalayarak, daha pürüzsüz bir görüntü elde edilmesini sağlar.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Gaussian bulanıklaştırma, bir görüntüyü yumuşatmak için Gaussian dağılımını kullanarak bir çekirdek (kernel) oluşturur. 
+            Bu çekirdek, görüntüdeki her piksel için uygulanır ve sonuçta her pikselin değeri, komşu piksellerin değerlerine göre ayarlanır.
+        </p>
+
+        <h2>Gaussian Çekirdeği</h2>
+        <p>
+            Gaussian çekirdeği genellikle aşağıdaki gibi tanımlanır:
+        </p>
+        <ul>
+            <li>G(x, y) = (1 / (2πσ²)) * e^(-(x² + y²) / (2σ²))</li>
+        </ul>
+        <p>
+            Burada, σ (sigma), dağılımın standart sapmasıdır ve bulanıklık seviyesini belirler. Daha yüksek sigma değerleri, daha fazla bulanıklık anlamına gelir.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            Gaussian bulanıklaştırma, görüntüdeki gürültüyü etkili bir şekilde azaltır ve kenar algılamadan önce daha iyi sonuçlar elde edilmesini sağlar. 
+            Ayrıca, görüntüdeki detayların kaybolma riskini en aza indirir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            Aşırı bulanıklaştırma durumunda, önemli detayların kaybolması riski vardır. Ayrıca, işlem süresi, çekirdek boyutuna bağlı olarak artabilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Gaussian bulanıklaştırma, tıbbi görüntü analizi, yüz tanıma sistemleri, video işleme ve genel görüntü işleme uygulamaları gibi birçok alanda kullanılmaktadır. 
+            Özellikle gürültü azaltma gereksinimi olan uygulamalarda tercih edilmektedir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

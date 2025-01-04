@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Scale Gaussian Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multi Scale Gaussian Algoritması</h1>
+
+    
+
+        <h2>Multi Scale Gaussian Nedir?</h2>
+        <p>
+            Multi Scale Gaussian algoritması, görüntü işleme ve analizinde kullanılan bir tekniktir. 
+            Bu algoritma, görüntüdeki farklı ölçeklerdeki detayları ve yapıları tespit etmek için Gauss filtreleri kullanır. 
+            Görüntüdeki özelliklerin farklı ölçeklerde analiz edilmesi, daha zengin bilgi sağlamaktadır.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Multi Scale Gaussian algoritması, görüntü üzerinde farklı sigma (σ) değerlerine sahip Gauss filtreleri uygular. 
+            Bu filtreler, görüntünün çeşitli ölçeklerdeki yapısal özelliklerini vurgular. 
+            Algoritma genel olarak şu adımları izler:
+        </p>
+        <ol>
+            <li>Farklı sigma değerleri için Gauss filtreleri tasarla.</li>
+            <li>Her bir filtreyi görüntü üzerinde uygula.</li>
+            <li>Filtrelenmiş görüntülerden özellikleri çıkar.</li>
+            <li>Farklı ölçeklerdeki bilgileri birleştir.</li>
+        </ol>
+
+        <h2>Gauss Filtrelerinin Kullanımı</h2>
+        <p>
+            Gauss filtresi, aşağıdaki formül ile tanımlanır:
+        </p>
+        <p>
+            G(x, y) = (1 / (2πσ²)) * e^(-(x² + y²) / (2σ²))
+        </p>
+        <p>
+            Burada:
+        </p>
+        <ul>
+            <li>G(x, y): Gauss filtresi fonksiyonu</li>
+            <li>σ: Gauss dağılımının standart sapması</li>
+            <li>(x, y): Piksel koordinatları</li>
+        </ul>
+        <p>
+            Farklı sigma değerleri kullanarak, görüntüdeki detayların belirli ölçeklerde nasıl değiştiğini gözlemleyebiliriz.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            - Farklı ölçeklerdeki bilgileri elde etme yeteneği vardır.<br>
+            - Gürültüye karşı dayanıklıdır ve görüntü kalitesini artırır.<br>
+            - Özellik çıkarımı için etkili bir yöntemdir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            - Hesaplama maliyeti yüksektir ve büyük görüntülerde yavaşlayabilir.<br>
+            - Filtrelerin parametrelerinin dikkatlice seçilmesi gerekir.<br>
+            - Aşırı gürültülü görüntülerde istenmeyen sonuçlar verebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Multi Scale Gaussian algoritması, yüz tanıma, nesne tespiti, biyomedikal görüntü analizi, dokusal sınıflandırma ve genel görüntü analizi gibi birçok alanda kullanılmaktadır. 
+            Özellikle farklı ölçeklerdeki bilgilerin önemli olduğu uygulamalarda tercih edilmektedir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

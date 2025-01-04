@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gradient Magnitude Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Gradient Magnitude Algoritması</h1>
+
+
+        <h2>Image Gradient Magnitude Nedir?</h2>
+        <p>
+            Image Gradient Magnitude, bir görüntüdeki kenarların ve detayların belirlenmesi için kullanılan bir tekniktir. 
+            Bu algoritma, her pikselin komşuları arasındaki yoğunluk değişimini ölçerek, görüntüdeki gradyanı (değişim oranını) hesaplar.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Image Gradient Magnitude algoritması, genellikle iki ana aşamadan oluşur: 
+            gradyanın hesaplanması ve gradyan magnitüdünün elde edilmesi. 
+            Bu işlem, genellikle Sobel veya Prewitt filtreleri gibi konvolüsyonel filtreler kullanılarak gerçekleştirilir.
+        </p>
+        <ol>
+            <li>Görüntü üzerinde gradyan filtreleri (örn. Sobel) uygulayın.</li>
+            <li>Her piksel için gradyan değerlerini hesaplayın:</li>
+            <ul>
+                <li>Gx: Yatay gradyan</li>
+                <li>Gy: Dikey gradyan</li>
+            </ul>
+            <li>Gradyan magnitüdünü hesaplayın:</li>
+            <p>
+                |G| = √(Gx² + Gy²)
+            </p>
+            <li>Tespit edilen kenarları belirlemek için bir eşik değeri uygulayın.</li>
+        </ol>
+
+        <h2>Kullanılan Filtreler</h2>
+        <p>
+            En yaygın olarak kullanılan filtrelerden bazıları şunlardır:
+        </p>
+        <ul>
+            <li><strong>Sobel Filtreleri:</strong> Kenarları tespit etmek için kullanılan en popüler filtrelerden biridir.</li>
+            <li><strong>Prewitt Filtreleri:</strong> Benzer bir şekilde çalışır, ancak farklı bir matematiksel formülasyona sahiptir.</li>
+            <li><strong>Canny Kenar Tespit:</strong> Daha karmaşık bir algoritmadır ve gradyan magnitüdünü kullanarak kenarları belirler.</li>
+        </ul>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            - Kenar tespitinde yüksek doğruluk sağlar.<br>
+            - Farklı yönlerdeki detayları tespit etme yeteneğine sahiptir.<br>
+            - Gürültüye karşı dayanıklıdır.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            - Gürültülü görüntülerde yanlış pozitif sonuçlar verebilir.<br>
+            - Eşik değerinin doğru seçilmesi zor olabilir.<br>
+            - Hesaplama maliyeti, büyük görüntülerde artış gösterebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Image Gradient Magnitude algoritması, yüz tanıma, nesne tespiti, tıbbi görüntü analizi, endüstriyel görüntü işleme ve genel görüntü analizi gibi birçok alanda kullanılmaktadır. 
+            Özellikle kenarların ve detayların önemli olduğu uygulamalarda tercih edilmektedir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

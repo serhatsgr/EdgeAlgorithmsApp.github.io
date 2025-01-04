@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenar Algılama Algoritmaları</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #1b69e8;
+            color: white;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .algorithm {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .algorithm:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.6em;
+            color: #1b69e8;
+            border-bottom: 2px solid #1b69e8;
+            padding-bottom: 5px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #1b69e8;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            min-width: 120px;
+        }
+
+        .button:hover {
+            background-color: #1b69e8;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kenar Algılama Algoritmaları</h1>
+    </header>
+
+    <div class="container">
+        <div class="algorithm" onclick="window.location.href='/laplacian'">
+            <h2>Laplacian</h2>
+            <p>Laplacian, görüntüdeki kenarları tespit etmek için kullanılan bir ikinci mertebe türev algoritmasıdır. Genellikle, yüksek frekanslı bileşenleri vurgulamak için kullanılır.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/sobel'">
+            <h2>Sobel</h2>
+            <p>Sobel operatörü, görüntüdeki kenarları tespit etmek için kullanılan bir filtre olup, genellikle x ve y yönündeki gradyanı hesaplar. Bu sayede, köşe ve kenar bölgeleri belirginleşir.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/canny'">
+            <h2>Canny</h2>
+            <p>Canny kenar algılama algoritması, çok aşamalı bir süreç ile kenarları tespit eder. Gürültü azaltma, gradient hesaplama, non-maximum suppression ve histerezis eşikleme gibi adımları içerir.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/prewitt'">
+            <h2>Prewitt</h2>
+            <p>Prewitt operatörü, Sobel'e benzer şekilde çalışan bir kenar algılama filtresidir. Ancak, kenarları tespit etmek için sabit bir gradyan hesaplaması kullanır.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/gaussian'">
+            <h2>Gaussian</h2>
+            <p>Gaussian filtresi, görüntüyü yumuşatmak ve gürültüyü azaltmak için kullanılır. Bu işlem, kenar algılama algoritmalarının daha etkili çalışmasını sağlar.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/median'">
+            <h2>Median</h2>
+            <p>Median filtresi, görüntüdeki gürültüyü azaltmak için kullanılır. Bu yöntem, her pikselin komşuları arasındaki medyan değerini alarak çalışır.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/bilateral'">
+            <h2>Bilateral</h2>
+            <p>Bilateral filtre, hem uzaysal hem de renk bilgisi kullanarak görüntüleri yumuşatır. Kenarları korurken gürültüyü azaltmaya yardımcı olur.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/scharr'">
+            <h2>Scharr</h2>
+            <p>Scharr operatörü, Sobel filtrelerinin bir uzantısıdır ve daha iyi kenar tespiti için optimize edilmiştir. Yüksek frekanslı bileşenleri daha iyi vurgular.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/roberts'">
+            <h2>Roberts</h2>
+            <p>Roberts operatörü, görüntüdeki kenarları tespit etmek için kullanılan bir başka yöntemdir. Genellikle, iki piksel arasındaki farkı alarak çalışır.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/log'">
+            <h2>Laplace of Gaussian (LoG)</h2>
+            <p>LoG, görüntüdeki kenarları tespit etmek için Laplacian ve Gaussian filtresinin birleşimini kullanır. Gürültüyü azaltırken kenarları belirginleştirir.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/threshold'">
+            <h2>Threshold</h2>
+            <p>Thresholding, görüntüdeki piksel değerlerine göre belirli bir eşik değerine göre kenarları ayırma işlemidir. Bu yöntem, basit ve hızlı bir kenar algılama sağlar.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/adaptive_threshold'">
+            <h2>Adaptive Threshold</h2>
+            <p>Adaptive thresholding, her piksel için farklı eşik değerleri kullanarak yerel ışık koşullarına göre çalışır. Bu yöntem, değişken aydınlatma koşullarında etkilidir.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/freichen'">
+            <h2>Frei-Chen</h2>
+            <p>Frei-Chen algoritması, görüntüdeki kenarları tespit etmek için farklı yönlerdeki gradyanları hesaplar. Bu sayede daha fazla bilgi elde edilir.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/hough_lines'">
+            <h2>Hough Transform</h2>
+            <p>Hough Transform, düz çizgileri tespit etmek için kullanılan bir yöntemdir. Görüntüdeki kenarları analiz ederek, çizgi parametrelerini belirler.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/gabor'">
+            <h2>Gabor</h2>
+            <p>Gabor filtresi, görüntüdeki kenar ve doku bilgilerini analiz etmek için kullanılır. Özellikle, frekans ve yön bilgisi sağlar.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/scale_gaussian'">
+            <h2>Multi Scale Gaussian</h2>
+            <p>Multi Scale Gaussian, görüntüdeki kenarları farklı ölçeklerde tespit etmek için kullanılır. Bu yöntem, daha fazla ayrıntı yakalamaya yardımcı olur.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/gradient_magnitude'">
+            <h2>Gradient Magnitude</h2>
+            <p>Gradient Magnitude, görüntüdeki gradyanların büyüklüğünü hesaplayarak kenarları belirler. Bu yöntem, keskin kenarları tespit etmede etkilidir.</p>
+        </div>
+
+        <div class="algorithm" onclick="window.location.href='/morphological'">
+            <h2>Morphological</h2>
+            <p>Morfolojik işlemler, görüntüdeki şekilleri analiz etmek için kullanılır. Kenarları belirginleştirmek ve gürültüyü azaltmak için çeşitli teknikler içerir.</p>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="{{ url_for('welcome') }}" class="button">Ana Sayfa</a>
+        <a href="index" class="button">Test Sayfası</a>
+    </div>
+</body>
+</html>

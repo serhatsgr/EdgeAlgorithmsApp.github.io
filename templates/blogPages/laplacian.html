@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laplacian Kenar Algılama Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Laplacian Kenar Algılama Algoritması</h1>
+
+        <h2>Laplacian Algoritması Nedir?</h2>
+        <p>
+            Laplacian kenar algılama algoritması, görüntü işleme alanında kenar tespiti için kullanılan bir yöntemdir.
+            Bu algoritma, görüntünün ikinci türevini alarak, yoğunluk değişimlerini tespit eder ve kenarları belirginleştirir.
+            Laplacian, keskin kenarların algılanmasında etkili bir yöntemdir.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Laplacian algoritması, bir görüntünün gradyanını hesaplamak için 3x3'lük bir konvolüsyon çekirdeği kullanır.
+            Algoritmanın temel adımları şunlardır:
+        </p>
+        <ol>
+            <li><strong>Görüntü Filtreleme</strong>: Görüntü, Laplacian çekirdeği ile filtrelenir.</li>
+            <li><strong>İkinci Türev Hesaplama</strong>: Piksel yoğunluğundaki değişim hesaplanarak kenarlar tespit edilir.</li>
+        </ol>
+
+        <h2>Laplacian Çekirdekleri</h2>
+        <p>
+            Laplacian algoritmasında sık kullanılan çekirdeklerden biri şudur:
+        </p>
+        <ul>
+            <li>
+                <pre>
+                [[0,  1,  0],
+                 [1, -4,  1],
+                 [0,  1,  0]]
+                </pre>
+            </li>
+        </ul>
+        <p>
+            Bu çekirdek, pikselin etrafındaki yoğunluk değişimlerini ölçer ve kenarların tespitine yardımcı olur.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            Laplacian algoritması, hızlı bir hesaplama sağlar ve kenarları keskin bir şekilde tespit eder.
+            Görüntüdeki belirgin kenarları etkili bir şekilde belirlemek için idealdir.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            Gürültüye karşı duyarlıdır ve bazı durumlarda yanlış pozitif tespitler yapabilir. Öncelikle görüntüdeki gürültünün azaltılması gerekir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Laplacian algoritması, tıbbi görüntü analizi, yüz tanıma, otonom araç sistemleri ve daha birçok alanda kullanılır.
+            Keskin kenarların belirlenmesi gereken uygulamalarda sıklıkla tercih edilir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

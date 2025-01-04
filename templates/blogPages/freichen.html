@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frei-Chen Algoritması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2a5298;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frei-Chen Algoritması</h1>
+
+        <h2>Frei-Chen Nedir?</h2>
+        <p>
+            Frei-Chen algoritması, görüntü işleme alanında kenar tespiti için kullanılan bir tekniktir. 
+            Bu algoritma, bir görüntüdeki kenarları tespit etmek amacıyla bir dizi yönlü filtre kullanır. 
+            Kenar tespiti, görüntüdeki önemli yapıları ve detayları belirlemek için kritik bir adımdır.
+        </p>
+
+        <h2>Algoritmanın Çalışma Prensibi</h2>
+        <p>
+            Frei-Chen algoritması, her bir piksel için çeşitli yönlerdeki gradyanları hesaplamak için 3x3'lük filtreler kullanır. 
+            Bu filtreler, her pikselin çevresindeki komşularla olan yoğunluk farkını ölçer. 
+            Algoritma, genellikle üç ana aşamadan oluşur:
+        </p>
+        <ol>
+            <li>Görüntü üzerinde 3x3'lük filtreler ile konvolüsyon işlemi yapılır.</li>
+            <li>Her bir yön için gradyan büyüklüğü hesaplanır.</li>
+            <li>Gradyanların birleştirilmesiyle kenar haritası oluşturulur.</li>
+        </ol>
+
+        <h2>Frei-Chen Filtreleri</h2>
+        <p>
+            Frei-Chen algoritmasında kullanılan filtreler, genellikle aşağıdaki şekilde tanımlanabilir:
+        </p>
+        <ul>
+            <li>Filtre 1: Yatay kenar tespiti</li>
+            <li>Filtre 2: Dikey kenar tespiti</li>
+            <li>Filtre 3: Diagonal kenar tespiti</li>
+        </ul>
+        <p>
+            Bu filtreler, görüntüdeki kenarların yönlerini belirtmek için tasarlanmıştır.
+        </p>
+
+        <h2>Avantajları ve Dezavantajları</h2>
+        <h3>Avantajları</h3>
+        <p>
+            - Yüksek doğrulukta kenar tespiti sağlar.<br>
+            - Farklı yönlerdeki kenarları tespit etme yeteneğine sahiptir.<br>
+            - Gürültüye karşı daha dayanıklıdır.
+        </p>
+        <h3>Dezavantajları</h3>
+        <p>
+            - Hesaplama maliyeti, daha basit kenar tespit yöntemlerine göre daha yüksektir.<br>
+            - Aşırı gürültülü görüntülerde istenmeyen sonuçlar verebilir.<br>
+            - Filtrelerin seçimi, algoritmanın performansını etkileyebilir.
+        </p>
+
+        <h2>Kullanım Alanları</h2>
+        <p>
+            Frei-Chen algoritması, tıbbi görüntü analizi, yüz tanıma, nesne tespiti, endüstriyel görüntü işleme ve genel görüntü analizi gibi birçok alanda kullanılmaktadır. 
+            Kenar tespitinin önemli olduğu durumlarda tercih edilmektedir.
+        </p>
+
+        <a href="{{ url_for('welcome') }}" class="back-button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

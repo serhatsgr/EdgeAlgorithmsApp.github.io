@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenar Tespit Uygulaması</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #58c5f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #444;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+
+        .panel {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .images-container {
+            display: flex;
+            gap: 20px; 
+            justify-content: center;
+            flex-wrap: nowrap; /* Keep images in one row */
+        }
+
+        .image-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-wrapper img {
+            width: 100%;  
+            max-width: 350px; 
+            height: auto;
+            border-radius: 12px;
+            margin: 10px 0;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .image-wrapper img:hover {
+            transform: scale(1.05);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        select, input[type="file"], button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            max-width: 160px; 
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input[type="file"]:focus, button:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .image-wrapper button {
+            margin-top: 8px;
+            padding: 8px 16px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .image-wrapper button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Kenar Tespit Uygulaması</h1>
+    <div class="container">
+        <div class="panel">
+            <h2>Kamera Görüntüsü</h2>
+            <div class="controls">
+                <select id="algorithm1_camera">
+                    <option value="laplacian">Laplacian</option>
+                    <option value="sobel">Sobel</option>
+                    <option value="canny">Canny</option>
+                    <option value="prewitt">Prewitt</option>
+                    <option value="gaussian">Gaussian</option>
+                    <option value="median">Median</option>
+                    <option value="bilateral">Bilateral</option>
+                    <option value="scharr">Scharr</option>
+                    <option value="roberts">Roberts</option>
+                    <option value="log">Laplace of Gaussian</option>
+                    <option value="threshold">Threshold</option>
+                    <option value="adaptive_threshold">Adaptive Threshold</option>
+                    <option value="frei-chen">Frei-chen</option>
+                    <option value="hough_lines">Hough Transform</option>
+                    <option value="gabor">Gabor</option>
+                    <option value="multi_scale_gaussian">Multi Scale Gaussian</option>
+                    <option value="gradient_magnitude">Image Gradient Magnitude</option>
+                    <option value="morphological">Morphological</option>
+                </select>
+                <select id="algorithm2_camera">
+                    <option value="laplacian">Laplacian</option>
+                    <option value="sobel">Sobel</option>
+                    <option value="canny">Canny</option>
+                    <option value="prewitt">Prewitt</option>
+                    <option value="gaussian">Gaussian</option>
+                    <option value="median">Median</option>
+                    <option value="bilateral">Bilateral</option>
+                    <option value="scharr">Scharr</option>
+                    <option value="roberts">Roberts</option>
+                    <option value="log">Laplace of Gaussian</option>
+                    <option value="threshold">Threshold</option>
+                    <option value="adaptive_threshold">Adaptive Threshold</option>
+                    <option value="frei-chen">Frei-chen</option>
+                    <option value="hough_lines">Hough Transform</option>
+                    <option value="gabor">Gabor</option>
+                    <option value="multi_scale_gaussian">Multi Scale Gaussian</option>
+                    <option value="gradient_magnitude">Image Gradient Magnitude</option>
+                    <option value="morphological">Morphological</option>
+                </select>
+            </div>
+            <div class="images-container">
+                <div class="image-wrapper">
+                    <img id="edge_output_camera1" alt="Kenar Algoritması 1 Kamera" />
+                    <button onclick="downloadImage('edge_output_camera1')">İndir</button>
+                </div>
+                <div class="image-wrapper">
+                    <img id="edge_output_camera2" alt="Kenar Algoritması 2 Kamera" />
+                    <button onclick="downloadImage('edge_output_camera2')">İndir</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Fotoğraf Yükle</h2>
+            <div class="controls">
+                <select id="algorithm1_upload">
+                    <option value="laplacian">Laplacian</option>
+                    <option value="sobel">Sobel</option>
+                    <option value="canny">Canny</option>
+                    <option value="prewitt">Prewitt</option>
+                    <option value="gaussian">Gaussian</option>
+                    <option value="median">Median</option>
+                    <option value="bilateral">Bilateral</option>
+                    <option value="scharr">Scharr</option>
+                    <option value="roberts">Roberts</option>
+                    <option value="log">Laplace of Gaussian</option>
+                    <option value="threshold">Threshold</option>
+                    <option value="adaptive_threshold">Adaptive Threshold</option>
+                    <option value="frei-chen">Frei-chen</option>
+                    <option value="hough_lines">Hough Transform</option>
+                    <option value="gabor">Gabor</option>
+                    <option value="multi_scale_gaussian">Multi Scale Gaussian</option>
+                    <option value="gradient_magnitude">Image Gradient Magnitude</option>
+                    <option value="morphological">Morphological</option>
+                </select>
+                <select id="algorithm2_upload">
+                    <option value="laplacian">Laplacian</option>
+                    <option value="sobel">Sobel</option>
+                    <option value="canny">Canny</option>
+                    <option value="prewitt">Prewitt</option>
+                    <option value="gaussian">Gaussian</option>
+                    <option value="median">Median</option>
+                    <option value="bilateral">Bilateral</option>
+                    <option value="scharr">Scharr</option>
+                    <option value="roberts">Roberts</option>
+                    <option value="log">Laplace of Gaussian</option>
+                    <option value="threshold">Threshold</option>
+                    <option value="adaptive_threshold">Adaptive Threshold</option>
+                    <option value="frei-chen">Frei-chen</option>
+                    <option value="hough_lines">Hough Transform</option>
+                    <option value="gabor">Gabor</option>
+                    <option value="multi_scale_gaussian">Multi Scale Gaussian</option>
+                    <option value="gradient_magnitude">Image Gradient Magnitude</option>
+                    <option value="morphological">Morphological</option>
+                </select>
+                <input type="file" accept="image/*" onchange="uploadImage(event)">
+            </div>
+            <div class="images-container">
+                <div class="image-wrapper">
+                    <img id="edge_output_upload1" />
+                    <button onclick="downloadImage('edge_output_upload1')">İndir</button>
+                </div>
+                <div class="image-wrapper">
+                    <img id="edge_output_upload2" />
+                    <button onclick="downloadImage('edge_output_upload2')">İndir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function startCameraStream() {
+            const algorithm1 = document.getElementById('algorithm1_camera').value;
+            const algorithm2 = document.getElementById('algorithm2_camera').value;
+            socket.emit('start_camera', { 'algorithm1': algorithm1, 'algorithm2': algorithm2 });
+        }
+
+        document.getElementById('algorithm1_upload').addEventListener('change', updateUploadedImage);
+        document.getElementById('algorithm2_upload').addEventListener('change', updateUploadedImage);
+
+        function updateUploadedImage() {
+            const algorithm1 = document.getElementById('algorithm1_upload').value;
+            const algorithm2 = document.getElementById('algorithm2_upload').value;
+            socket.emit('change_algorithm', { 'algorithm1': algorithm1, 'algorithm2': algorithm2 });
+        }
+
+        function uploadImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const algorithm1 = document.getElementById('algorithm1_upload').value;
+                const algorithm2 = document.getElementById('algorithm2_upload').value;
+                socket.emit('upload_image', { 'image': e.target.result, 'algorithm1': algorithm1, 'algorithm2': algorithm2 });
+            };
+            reader.readAsDataURL(file);
+        }
+
+        socket.on('camera_frame', function(data) {
+            document.getElementById('edge_output_camera1').src = 'data:image/jpeg;base64,' + data.edge_frame1;
+            document.getElementById('edge_output_camera2').src = 'data:image/jpeg;base64,' + data.edge_frame2;
+        });
+
+        socket.on('uploaded_frame', function(data) {
+            document.getElementById('edge_output_upload1').src = 'data:image/jpeg;base64,' + data.edge_frame1;
+            document.getElementById('edge_output_upload2').src = 'data:image/jpeg;base64,' + data.edge_frame2;
+        });
+
+        document.getElementById('algorithm1_camera').addEventListener('change', startCameraStream);
+        document.getElementById('algorithm2_camera').addEventListener('change', startCameraStream);
+
+        window.onload = startCameraStream;
+
+        function downloadImage(imageId) {
+            const imgElement = document.getElementById(imageId);
+            const link = document.createElement('a');
+            link.href = imgElement.src;
+            link.download = imageId + '.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
